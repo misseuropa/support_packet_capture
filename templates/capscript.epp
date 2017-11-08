@@ -1,0 +1,13 @@
+#<%- | String $interface,
+#      String $savedir,
+#      String $hostname,
+#      String $packetcount,
+#      String $port,
+#| -%>
+#!/bin/bash
+
+tcpdump <% if $interface { -%>
+-i <%= $interface %> <% } -%>
+-w <%= $savedir -%><%= $hostname -%>
+.pcap -c <%= $packetcount -%>
+port <%= $port -%>
