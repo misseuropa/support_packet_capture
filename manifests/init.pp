@@ -1,6 +1,6 @@
 # Main file for the support_packet_capture Module
 
-class packetcapprep (
+class support_packet_capture::packetcapprep (
   # Create params and default values
   $savedir = '/var/tmp/',
   $interface = undef,
