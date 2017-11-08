@@ -15,7 +15,7 @@ class support_packet_capture::packetcapprep (
   file {'capscript':
     ensure => present,
     path => "/var/tmp/capscript.sh",
-    content => epp(support_packet_capture/capscript.epp),
+    content => epp('support_packet_capture/capscript.epp'),
     mode => "0755",
   }
 }
