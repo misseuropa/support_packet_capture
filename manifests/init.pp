@@ -6,7 +6,7 @@ class support_packet_capture::packetcapprep (
   $interface = undef,
   $packetcount = '10000',
   $port = '8140',
-  $hostname = ${facts[hostname]},
+  $hostname = "${facts[hostname]}",
 ){
   package {'tcpdump':
     ensure => latest,
