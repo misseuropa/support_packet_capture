@@ -1,6 +1,6 @@
 # Main file for the support_packet_capture Module
 
-class support_packet_capture::packetcapprep (
+class support_packet_capture (
   # Create params and default values
   Boolean $remove = false,
   String $savedir = '/var/tmp/',
