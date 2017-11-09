@@ -2,18 +2,29 @@
 
 class support_packet_capture::packetcapprep (
   # Create params and default values
-  $savedir = '/var/tmp/',
+  Boolean $remove = false,
+  String $savedir = '/var/tmp/',
   $interface = undef,
-  $packetcount = '10000',
-  $port = '8140',
-  $hostname = "${facts[hostname]}",
+  String $packetcount = '1000',
+  String $port = '8140',
+  String $hostname = "${facts[hostname]}",
 ){
+  $package_ensure = $remove ? {
+    true => absent,
+    false => latest,
+  }
+
+  $file_ensure = $remove ? {
+    true => absent,
+    false => present,
+  }
+
   package {'tcpdump':
-    ensure => latest,
+    ensure => $package_ensure,
   }
 
   file {'capscript':
-    ensure => present,
+    ensure => $file_ensure,
     path => "/var/tmp/capscript.sh",
     content => epp('support_packet_capture/capscript.epp'),
     mode => "0755",

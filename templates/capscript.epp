@@ -1,13 +1,5 @@
-#<%- | String $interface,
-#      String $savedir,
-#      String $hostname,
-#      String $packetcount,
-#      String $port,
-#| -%>
 #!/bin/bash
 
-tcpdump <% if $interface { -%>
--i <%= $interface %> <% } -%>
--w <%= $savedir -%><%= $hostname -%>
-.pcap -c <%= $packetcount -%>
-port <%= $port -%>
+tcpdump <% if $support_packet_capture::packetcapprep::interface != undef { -%>
+-i <%= $support_packet_capture::packetcapprep::interface %> <% } %> -w <%= $support_packet_capture::packetcapprep::savedir -%><%= $support_packet_capture::packetcapprep::hostname -%>
+.pcap -c <%= $support_packet_capture::packetcapprep::packetcount %> port <%= $support_packet_capture::packetcapprep::port %>
