@@ -1,6 +1,6 @@
 {
   "name": "spynappels-support_packet_capture",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "author": "Stefan Pijnappels",
   "summary": "This module makes capturing network traffic to submit to Puppet Support as part of a Puppet Support ticket easy.",
   "license": "Apache-2.0",
