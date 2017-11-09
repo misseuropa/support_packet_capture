@@ -11,12 +11,12 @@ class support_packet_capture (
 ){
   $package_ensure = $remove ? {
     true => absent,
-    false => latest,
+    default => latest,
   }
 
   $file_ensure = $remove ? {
     true => absent,
-    false => present,
+    default => present,
   }
 
   package {'tcpdump':

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'support_packet_capture::packetcapprep' do
+describe 'support_packet_capture' do
   on_supported_os(facterversion: '2.4').each do |os, os_facts|
     context "on #{os}" do
       let(:facts) { os_facts }
@@ -20,7 +20,7 @@ describe 'support_packet_capture::packetcapprep' do
   end
 end
 
-describe 'support_packet_capture::packetcapprep' do
+describe 'support_packet_capture' do
   on_supported_os(facterversion: '2.4').each do |os, os_facts|
     context "on #{os}" do
       let(:facts) { os_facts }
