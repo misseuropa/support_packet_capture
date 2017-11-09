@@ -1,5 +1,7 @@
 #!/bin/bash
-
+# Created by Puppet module spynappels/support_packet_capture to assist in troubleshooting
+# network issues between a Puppet agent and the Master. To use, simply execute this script
+# and upload the resulting file to Puppet Support in your Support ticket.
 tcpdump <% if $support_packet_capture::packetcapprep::interface != undef { -%>
 -i <%= $support_packet_capture::packetcapprep::interface %> <% } %> -w <%= $support_packet_capture::packetcapprep::savedir -%><%= $support_packet_capture::packetcapprep::hostname -%>
 .pcap -c <%= $support_packet_capture::packetcapprep::packetcount %> port <%= $support_packet_capture::packetcapprep::port %>
