@@ -1,21 +1,10 @@
 
 # support_packet_capture
 
-Welcome to your new module. A short overview of the generated parts can be found in the PDK documentation at https://docs.puppet.com/pdk/1.0/pdk_generating_modules.html#module-contents .
-
-Below you'll find the default README template ready for some content.
-
-
-
-
-
-
-
 #### Table of Contents
 
 1. [Description](#description)
 2. [Setup - The basics of getting started with support_packet_capture](#setup)
-    * [What support_packet_capture affects](#what-support_packet_capture-affects)
     * [Setup requirements](#setup-requirements)
     * [Beginning with support_packet_capture](#beginning-with-support_packet_capture)
 3. [Usage - Configuration options and additional functionality](#usage)
@@ -25,57 +14,40 @@ Below you'll find the default README template ready for some content.
 
 ## Description
 
-Start with a one- or two-sentence summary of what the module does and/or what problem it solves. This is your 30-second elevator pitch for your module. Consider including OS/Puppet version it works with.       
+This module is designed to simplify installing tcpdump and capturing network traffic on Debian and EL based Linux distros.   
 
-You can give more descriptive information in a second paragraph. This paragraph should answer the questions: "What does this module *do*?" and "Why would I use it?" If your module has a range of functionality (installation, configuration, management, etc.), this is the time to mention it.
+This module will help sysadmins to capture simple network traces as requested by Puppet Support during diagnosis of issues in Support Tickets for Puppet Enterprise. It may also be useful for anyone taking their first steps in network analysis using tcpdum and/or Wireshark.
 
 ## Setup
 
-### What support_packet_capture affects **OPTIONAL**
+### Setup Requirements
 
-If it's obvious what your module touches, you can skip this section. For example, folks can probably figure out that your mysql_instance module affects their MySQL instances.
-
-If there's more that they should know about, though, this is the place to mention:
-
-* Files, packages, services, or operations that the module will alter, impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled, another module, etc.), mention it here. 
-  
-If your most recent release breaks compatibility or requires particular steps for upgrading, you might want to include an additional "Upgrading" section here.
+This module has no dependencies, other than the ability to install the tcpdump utility from configured system repositories.
 
 ### Beginning with support_packet_capture  
 
-The very basic steps needed for a user to get the module up and running. This can include setup steps, if necessary, or it can be an example of the most basic use of the module.
+Once the module is installed, to use it simply classify any Linux node with the provided `support_packet_capture` class.
 
 ## Usage
 
-This section is where you describe how to customize, configure, and do the fancy stuff with your module here. It's especially helpful if you include usage examples and code samples for doing things with your module.
+The default instance of this module creates a Bash script (`capscript.sh`) in `/var/tmp/` which, when run, captures 1000 packets on the primary network interface, filtered on TCP port 8140. The packets are written to a file in `/var/tmp/`, the name of which is defined as `${facts[hostname]}.pcap`.
+The function can be customised using the following parameters:
+
+* port: Providing a port value applies a capture filter on a different TCP port.
+* interface: Providing the name of an interface allows you to capture on a specific network interface.
+* packetcount: Allows you to specify the number of packets to capture before exiting.
+* savedir: Allows customisation of the directory the packet captures are saved to. The directory must exist on the target system.
+* remove: If set to `true`, the next Puppet run will uninstall tcpdump and remove `/var/tmp/capscript.sh`. Any pcap files captured using the script will *NOT* be removed.
 
 ## Reference
 
-Users need a complete list of your module's classes, types, defined types providers, facts, and functions, along with the parameters for each. You can provide this list either via Puppet Strings code comments or as a complete list in the README Reference section.
-
-* If you are using Puppet Strings code comments, this Reference section should include Strings information so that your users know how to access your documentation.
-
-* If you are not using Puppet Strings, include a list of all of your classes, defined types, and so on, along with their parameters. Each element in this listing should include:
-
-  * The data type, if applicable.
-  * A description of what the element does.
-  * Valid values, if the data type doesn't make it obvious.
-  * Default value, if any.
+This module only provides a single class, with 2 resources.
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc. If there are Known Issues, you might want to include them under their own heading here.
+This module works with all Debian or Enterprise Linux based distributions.
+It *should* be compatible with all versions of Puppet, but is designed for Puppet 4 and Puppet 5 specifically.
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc. **Optional**
-
-If you aren't using changelog, put your release notes here (though you should consider using changelog). You can also add any additional sections you feel are necessary or important to include here. Please use the `## ` header. 
+To contibute, please raise PRs on this module's Github page.
