@@ -7,7 +7,7 @@ class support_packet_capture (
   $interface = undef,
   String $packetcount = '1000',
   String $port = '8140',
-  String $hostname = ${facts[hostname]},
+  String $hostname = $facts[hostname],
 ){
   $package_ensure = $remove ? {
     true => absent,
@@ -24,9 +24,9 @@ class support_packet_capture (
   }
 
   file {'capscript':
-    ensure => $file_ensure,
-    path => '/var/tmp/capscript.sh',
+    ensure  => $file_ensure,
+    path    => '/var/tmp/capscript.sh',
     content => epp('support_packet_capture/capscript.epp'),
-    mode => '0755',
+    mode    => '0755',
   }
 }

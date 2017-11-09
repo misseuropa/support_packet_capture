@@ -1,8 +1,8 @@
 {
   "name": "spynappels-support_packet_capture",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Stefan Pijnappels",
-  "summary": "This module installs tcpdump on a target system, and creates a Bash script which captures network traffic between the Agent and Master to submit to Puppet Support as part of a Puppet Support ticket.",
+  "summary": "This module makes capturing network traffic to submit to Puppet Support as part of a Puppet Support ticket easy.",
   "license": "Apache-2.0",
   "source": "https://github.com/spynappels/support_packet_capture",
   "dependencies": [
