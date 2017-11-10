@@ -9,7 +9,7 @@
     },
     "packetcount": {
       "description": "The number of packets to capture",
-      "type": "Optional[String[1]]"
+      "type": "Optional[Integer]"
     },
     "savefile": {
       "description": "The file to save the capture to",
