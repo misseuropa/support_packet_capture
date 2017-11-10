@@ -44,9 +44,9 @@ The function can be customised using the following parameters:
 This module also includes 3 Tasks:
 * A task to run the `capscript.sh` provided by this module.
 * A task to kill a running tcpdump.
-* A task to run a custom tcpdump, where the interface, number of packets, the save file and the capture filter can all be passed in as parameters. The interface parameter is passed to the `-i` flag in tcpdump, and should be the interface name as found in `ip link show`. The number of packets is passed to the `-c` flag in tcpdump if it is an integer, and disables the default packet capture limit if it is "none". The save file is passed to tcpdump's `-w` flag and should be a path where any required directories exist. The capture filter should be a valid tcpdump capture filter.
+* A task to run a custom tcpdump, where the interface (string), number of packets (integer), the save file (string) and the capture filter (string) can all be passed in as parameters. The interface parameter is passed to the `-i` flag in tcpdump, and should be the interface name as found in `ip link show`. The number of packets is passed to the `-c` flag in tcpdump if it is a positive integer, and disables the default packet capture limit if it is 0. The save file is passed to tcpdump's `-w` flag and should be a path where any required directories exist. The capture filter should be a valid tcpdump capture filter.
 
-The custom tcpdump capture task has a default packet limit of 50 packets, to avoid an open-ended capture filling a disk. To change the number of packets captured, simply pass the required number of packets as a parameter. Passing "none" as the `packetcount` parameter removes the default 50 packet limit and should be done with **extreme caution**.
+The custom tcpdump capture task has a default packet limit of 50 packets, to avoid an open-ended capture filling a disk. To change the number of packets captured, simply pass the required number of packets as a parameter. Passing 0 as the `packetcount` parameter removes the default 50 packet limit and should be done with **extreme caution**.
 
 ## Reference
 
