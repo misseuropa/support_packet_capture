@@ -1,0 +1,7 @@
+{
+  "puppet_task_version": 1,
+  "supports_noop": false,
+  "description": "Run the packet capture provided by this module as a task",
+  "parameters": {
+  }
+}
