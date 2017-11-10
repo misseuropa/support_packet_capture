@@ -6,7 +6,7 @@ savefile=""
 packetcount=""
 if [[ -z $PT_packetcount ]]
   then packetcount="-c 50"
-elif [[ $PT_packetcount gt 0 ]]
+elif [[ $PT_packetcount -gt 0 ]]
   then packetcount="-c "$PT_packetcount
 fi
 if [[ ! -z $PT_interface  ]]
