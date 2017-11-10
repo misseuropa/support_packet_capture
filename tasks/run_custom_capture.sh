@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Puppet Task Name: run_custom_capture
 interface=""
@@ -8,10 +8,10 @@ if [[ -z $PT_packetcount ]]
 elif [[ $PT_packetcount == "none" ]]
   then PT_packetcount=""
 fi
-if [[ -z $PT_interface  ]]
+if [[ ! -z $PT_interface  ]]
   then interface="-i "$PT_interface
 fi
-if [[ -z $PT_savefile  ]]
+if [[ ! -z $PT_savefile  ]]
   then savefile="-w "$PT_savefile
 fi
 
