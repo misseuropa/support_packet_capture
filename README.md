@@ -32,7 +32,7 @@ The Tasks can be accessed in the Tasks sidebar of the PE Console.
 
 ## Usage
 
-The default instance of this module creates a Bash script (`capscript.sh`) in `/var/tmp/` which, when run, captures 1000 packets on the primary network interface, filtered on TCP port 8140. The packets are written to a file in `/var/tmp/`, the name of which is defined as `${facts[hostname]}.pcap`.
+The default instance of this module creates a Bash script (`capscript.sh`) in `/var/tmp/` which, when run, captures 1000 packets on the primary network interface, filtered on TCP port 8140. The packets are written to a file in `/var/tmp/`, the name of which is defined as `${facts[hostname]}.<timestamp>.pcap`.
 The function can be customised using the following parameters:
 
 * port: Providing a port value applies a capture filter on a different TCP port.
