@@ -1,0 +1,23 @@
+{
+  "puppet_task_version": 1,
+  "supports_noop": false,
+  "description": "A task to run arbitrary packet captures",
+  "parameters": {
+    "interface": {
+      "description": "The Interface to capture on",
+      "type": "Optional[String[1]]"
+    },
+    "packetcount": {
+      "description": "The number of packets to capture",
+      "type": "Optional[Integer]"
+    },
+    "savefile": {
+      "description": "The file to save the capture to",
+      "type": "Optional[String[1]]"
+    },
+    "capturefilter": {
+      "description": "The filter to use when capturing packets",
+      "type": "Optional[String[1]]"
+    }
+  }
+}

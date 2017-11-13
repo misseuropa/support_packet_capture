@@ -4,4 +4,4 @@
 # and upload the resulting file to Puppet Support in your Support ticket.
 tcpdump <% if $support_packet_capture::interface != undef { -%>
 -i <%= $support_packet_capture::interface %> <% } %> -w <%= $support_packet_capture::savedir -%><%= $support_packet_capture::hostname -%>
-.pcap -c <%= $support_packet_capture::packetcount %> port <%= $support_packet_capture::port %>
+.$(date +%F:%R).pcap -c <%= $support_packet_capture::packetcount %> port <%= $support_packet_capture::port %>
